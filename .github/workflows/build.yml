@@ -261,6 +261,7 @@ jobs:
           python scripts/bootstrap.py
           gclient sync -D -R
           build/linux/sysroot_scripts/install-sysroot.py --arch=arm64
+          cat .gclient
           gn gen out/Release --args="is_debug=false is_official_build=true chrome_pgo_phase=false is_chrome_branding=false is_cfi=false enable_stripping=true angle_enable_overlay=false is_component_build=false dcheck_always_on=false symbol_level=0 blink_symbol_level=0 target_cpu=\"arm64\" angle_build_all=false angle_enable_gl=false angle_enable_null=false angle_enable_vulkan=true"
           autoninja -C out/Release
       - name: Pack
