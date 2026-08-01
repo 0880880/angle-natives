@@ -40,21 +40,10 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          mkdir angle-windows-x64
-          mkdir angle-windows-x64/dist
-          rm -rf out/Release/cdb
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          rm -rf out/Release/environment.*
-          find out/Release -name "*.pdb" -delete
-          mv -f out/Release/* angle-windows-x64/dist/
+          mkdir -p angle-windows-x64/dist
+          cp out/Release/libGLESv2.dll angle-windows-x64/dist/
+          cp out/Release/libEGL.dll angle-windows-x64/dist/
           cp -rf include angle-windows-x64/
-          find angle-windows-x64 -name ".clang-format" -delete
-          find angle-windows-x64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -90,21 +79,10 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          mkdir angle-windows-arm64
-          mkdir angle-windows-arm64/dist
-          rm -rf out/Release/cdb
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          rm -rf out/Release/environment.*
-          find out/Release -name "*.pdb" -delete
-          mv -f out/Release/* angle-windows-arm64/dist/
+          mkdir -p angle-windows-arm64/dist
+          cp out/Release/libGLESv2.dll angle-windows-arm64/dist/
+          cp out/Release/libEGL.dll angle-windows-arm64/dist/
           cp -rf include angle-windows-arm64/
-          find angle-windows-arm64 -name ".clang-format" -delete
-          find angle-windows-arm64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -132,19 +110,10 @@ jobs:
           autoninja -C out/Release libGLESv2 libEGL
       - name: Pack
         run: |
-          mkdir angle-macos-x64
-          mkdir angle-macos-x64/dist
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          find out/Release -name "*.TOC" -delete
-          mv -f out/Release/* angle-macos-x64/dist/
+          mkdir -p angle-macos-x64/dist
+          cp out/Release/libGLESv2.dylib angle-macos-x64/dist/
+          cp out/Release/libEGL.dylib angle-macos-x64/dist/
           cp -rf include angle-macos-x64/
-          find angle-macos-x64 -name ".clang-format" -delete
-          find angle-macos-x64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -172,19 +141,10 @@ jobs:
           autoninja -C out/Release libGLESv2 libEGL
       - name: Pack
         run: |
-          mkdir angle-macos-arm64
-          mkdir angle-macos-arm64/dist
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          find out/Release -name "*.TOC" -delete
-          mv -f out/Release/* angle-macos-arm64/dist/
+          mkdir -p angle-macos-arm64/dist
+          cp out/Release/libGLESv2.dylib angle-macos-arm64/dist/
+          cp out/Release/libEGL.dylib angle-macos-arm64/dist/
           cp -rf include angle-macos-arm64/
-          find angle-macos-arm64 -name ".clang-format" -delete
-          find angle-macos-arm64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -215,21 +175,10 @@ jobs:
           autoninja -C out/Release
       - name: Pack
         run: |
-          mkdir angle-linux-x64
-          mkdir angle-linux-x64/dist
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          find out/Release -name "*.TOC" -delete
-          strip -s out/Release/libEGL.so
-          strip -s out/Release/libGLESv2.so
-          mv -f out/Release/* angle-linux-x64/dist/
+          mkdir -p angle-linux-x64/dist
+          cp out/Release/libGLESv2.so angle-linux-x64/dist/
+          cp out/Release/libEGL.so angle-linux-x64/dist/
           cp -rf include angle-linux-x64/
-          find angle-linux-x64 -name ".clang-format" -delete
-          find angle-linux-x64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -265,21 +214,10 @@ jobs:
           autoninja -C out/Release
       - name: Pack
         run: |
-          mkdir angle-linux-arm64
-          mkdir angle-linux-arm64/dist
-          rm -rf out/Release/gen
-          rm -rf out/Release/obj
-          rm -rf out/Release/args.gn
-          rm -rf out/Release/build.ninja
-          rm -rf out/Release/build.ninja.d
-          rm -rf out/Release/toolchain.ninja
-          find out/Release -name "*.TOC" -delete
-          aarch64-linux-gnu-strip -s out/Release/libEGL.so
-          aarch64-linux-gnu-strip -s out/Release/libGLESv2.so
-          mv -f out/Release/* angle-linux-arm64/dist/
+          mkdir -p angle-linux-arm64/dist
+          cp out/Release/libGLESv2.so angle-linux-arm64/dist/
+          cp out/Release/libEGL.so angle-linux-arm64/dist/
           cp -rf include angle-linux-arm64/
-          find angle-linux-arm64 -name ".clang-format" -delete
-          find angle-linux-arm64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -318,19 +256,9 @@ jobs:
         run: |
           mkdir angle-android-arm64
           mkdir angle-android-arm64/dist
-          rm -rf out/Android/gen
-          rm -rf out/Android/obj
-          rm -rf out/Android/args.gn
-          rm -rf out/Android/build.ninja
-          rm -rf out/Android/build.ninja.d
-          rm -rf out/Android/toolchain.ninja
-          find out/Android -name "*.TOC" -delete
-          llvm-strip -s out/Android/libEGL.so
-          llvm-strip -s out/Android/libGLESv2.so
-          mv -f out/Android/* angle-android-arm64/dist/
+          cp out/Release/libGLESv2.dylib angle-android-arm64/dist/
+          cp out/Release/libEGL.dylib angle-android-arm64/dist/
           cp -rf include angle-android-arm64/
-          find angle-android-arm64 -name ".clang-format" -delete
-          find angle-android-arm64 -name "*.md" -delete
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
