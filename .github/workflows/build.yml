@@ -43,8 +43,8 @@ jobs:
           mkdir -p angle-windows-x64/dist
           cp out/Release/libGLESv2.dll angle-windows-x64/dist/
           cp out/Release/libEGL.dll angle-windows-x64/dist/
+          cp out/Release/vulkan-1.dll angle-windows-x64/dist/
           cp -rf include angle-windows-x64/
-          ls out/Release/
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -83,6 +83,7 @@ jobs:
           mkdir -p angle-windows-arm64/dist
           cp out/Release/libGLESv2.dll angle-windows-arm64/dist/
           cp out/Release/libEGL.dll angle-windows-arm64/dist/
+          cp out/Release/vulkan-1.dll angle-windows-arm64/dist/
           cp -rf include angle-windows-arm64/
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
@@ -179,6 +180,7 @@ jobs:
           mkdir -p angle-linux-x64/dist
           cp out/Release/libGLESv2.so angle-linux-x64/dist/
           cp out/Release/libEGL.so angle-linux-x64/dist/
+          cp out/Release/vulkan-1.so angle-linux-x64/dist/
           cp -rf include angle-linux-x64/
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
@@ -218,6 +220,7 @@ jobs:
           mkdir -p angle-linux-arm64/dist
           cp out/Release/libGLESv2.so angle-linux-arm64/dist/
           cp out/Release/libEGL.so angle-linux-arm64/dist/
+          cp out/Release/vulkan-1.so angle-linux-arm64/dist/
           cp -rf include angle-linux-arm64/
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
