@@ -297,7 +297,8 @@ jobs:
         env:
           ANGLE_REVISION: ${{needs.load-rev.outputs.rev}}
         run: |
-          git clone https://github.com/google/angle . && git checkout "$ANGLE_REVISION"
+          git clone https://chromium.googlesource.com/angle/angle . && git checkout "$ANGLE_REVISION"
+          git submodule update --init --recursive
       - name: Fetch depot_tools
         run: |
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -305,7 +306,6 @@ jobs:
         run: |
           sudo apt-get update
           ./build/install-build-deps.sh
-          ./build/install-build-deps-android.sh
       - name: Build
         run: |
           export PATH="$(pwd)/depot_tools:$PATH"
