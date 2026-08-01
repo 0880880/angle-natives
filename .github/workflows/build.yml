@@ -259,11 +259,11 @@ jobs:
           cp angle-windows-arm64/dist/libGLESv2.dll out/windows/arm64/angle/
           cp angle-windows-x64/dist/libEGL.dll out/windows/x64/angle/
           cp angle-windows-x64/dist/libGLESv2.dll out/windows/x64/angle/
-          cd out && zip -r -9 ../gdx-angle-natives.zip . && cd ../
-          git add gdx-angle-natives.zip
+          cd out && zip -r -9 ../angle-natives.zip . && cd ../
+          git add angle-natives.zip
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: gdx-angle-natives.zip update [skip ci]"
+          git commit -m "chore: angle-natives.zip update [skip ci]"
           git push
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
