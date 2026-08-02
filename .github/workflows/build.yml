@@ -253,16 +253,20 @@ jobs:
           mkdir -p out/windows/x64/angle
           cp angle-linux-arm64/dist/libEGL.so out/linux/arm64/angle/
           cp angle-linux-arm64/dist/libGLESv2.so out/linux/arm64/angle/
+          cp angle-linux-arm64/dist/libvulkan.so out/linux/arm64/angle/
           cp angle-linux-x64/dist/libEGL.so out/linux/x64/angle/
           cp angle-linux-x64/dist/libGLESv2.so out/linux/x64/angle/
+          cp angle-linux-x64/dist/libvulkan.so out/linux/x64/angle/
           cp angle-macos-arm64/dist/libEGL.dylib out/macos/arm64/angle/
           cp angle-macos-arm64/dist/libGLESv2.dylib out/macos/arm64/angle/
           cp angle-macos-x64/dist/libEGL.dylib out/macos/x64/angle/
           cp angle-macos-x64/dist/libGLESv2.dylib out/macos/x64/angle/
           cp angle-windows-arm64/dist/libEGL.dll out/windows/arm64/angle/
           cp angle-windows-arm64/dist/libGLESv2.dll out/windows/arm64/angle/
+          cp angle-windows-arm64/dist/vulkan-1.dll out/windows/arm64/angle/
           cp angle-windows-x64/dist/libEGL.dll out/windows/x64/angle/
           cp angle-windows-x64/dist/libGLESv2.dll out/windows/x64/angle/
+          cp angle-windows-x64/dist/vulkan-1.dll out/windows/x64/angle/
           cd out && zip -r -9 ../angle-natives.zip . && cd ../
           git add angle-natives.zip
           git config --global user.name "github-actions[bot]"
